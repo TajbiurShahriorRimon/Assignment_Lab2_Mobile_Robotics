@@ -1,0 +1,37 @@
+running egg_info
+creating ../../build/square_mover/square_mover.egg-info
+writing ../../build/square_mover/square_mover.egg-info/PKG-INFO
+writing dependency_links to ../../build/square_mover/square_mover.egg-info/dependency_links.txt
+writing entry points to ../../build/square_mover/square_mover.egg-info/entry_points.txt
+writing requirements to ../../build/square_mover/square_mover.egg-info/requires.txt
+writing top-level names to ../../build/square_mover/square_mover.egg-info/top_level.txt
+writing manifest file '../../build/square_mover/square_mover.egg-info/SOURCES.txt'
+reading manifest file '../../build/square_mover/square_mover.egg-info/SOURCES.txt'
+writing manifest file '../../build/square_mover/square_mover.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/agilex/cpsc_ws1/build/square_mover/build
+creating /home/agilex/cpsc_ws1/build/square_mover/build/lib
+creating /home/agilex/cpsc_ws1/build/square_mover/build/lib/square_mover
+copying square_mover/__init__.py -> /home/agilex/cpsc_ws1/build/square_mover/build/lib/square_mover
+copying square_mover/square_mover.py -> /home/agilex/cpsc_ws1/build/square_mover/build/lib/square_mover
+running install
+running install_lib
+/usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+creating /home/agilex/cpsc_ws1/install/square_mover/lib/python3.10/site-packages/square_mover
+copying /home/agilex/cpsc_ws1/build/square_mover/build/lib/square_mover/__init__.py -> /home/agilex/cpsc_ws1/install/square_mover/lib/python3.10/site-packages/square_mover
+copying /home/agilex/cpsc_ws1/build/square_mover/build/lib/square_mover/square_mover.py -> /home/agilex/cpsc_ws1/install/square_mover/lib/python3.10/site-packages/square_mover
+byte-compiling /home/agilex/cpsc_ws1/install/square_mover/lib/python3.10/site-packages/square_mover/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/agilex/cpsc_ws1/install/square_mover/lib/python3.10/site-packages/square_mover/square_mover.py to square_mover.cpython-310.pyc
+running install_data
+creating /home/agilex/cpsc_ws1/install/square_mover/share/ament_index
+creating /home/agilex/cpsc_ws1/install/square_mover/share/ament_index/resource_index
+creating /home/agilex/cpsc_ws1/install/square_mover/share/ament_index/resource_index/packages
+copying resource/square_mover -> /home/agilex/cpsc_ws1/install/square_mover/share/ament_index/resource_index/packages
+copying package.xml -> /home/agilex/cpsc_ws1/install/square_mover/share/square_mover
+running install_egg_info
+Copying ../../build/square_mover/square_mover.egg-info to /home/agilex/cpsc_ws1/install/square_mover/lib/python3.10/site-packages/square_mover-0.0.0-py3.10.egg-info
+running install_scripts
+Installing square_mover script to /home/agilex/cpsc_ws1/install/square_mover/lib/square_mover
+writing list of installed files to '/home/agilex/cpsc_ws1/build/square_mover/install.log'

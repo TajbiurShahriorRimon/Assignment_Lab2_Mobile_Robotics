@@ -1,0 +1,39 @@
+[0.368s] Invoking command in '/home/agilex/cpsc_ws1/src/square_mover': PYTHONPATH=/home/agilex/cpsc_ws1/build/square_mover/prefix_override:/home/agilex/cpsc_ws1/install/square_mover/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/square_mover build --build-base /home/agilex/cpsc_ws1/build/square_mover/build install --record /home/agilex/cpsc_ws1/build/square_mover/install.log --single-version-externally-managed
+[0.491s] running egg_info
+[0.492s] creating ../../build/square_mover/square_mover.egg-info
+[0.492s] writing ../../build/square_mover/square_mover.egg-info/PKG-INFO
+[0.492s] writing dependency_links to ../../build/square_mover/square_mover.egg-info/dependency_links.txt
+[0.492s] writing entry points to ../../build/square_mover/square_mover.egg-info/entry_points.txt
+[0.492s] writing requirements to ../../build/square_mover/square_mover.egg-info/requires.txt
+[0.492s] writing top-level names to ../../build/square_mover/square_mover.egg-info/top_level.txt
+[0.492s] writing manifest file '../../build/square_mover/square_mover.egg-info/SOURCES.txt'
+[0.493s] reading manifest file '../../build/square_mover/square_mover.egg-info/SOURCES.txt'
+[0.493s] writing manifest file '../../build/square_mover/square_mover.egg-info/SOURCES.txt'
+[0.493s] running build
+[0.493s] running build_py
+[0.494s] creating /home/agilex/cpsc_ws1/build/square_mover/build
+[0.494s] creating /home/agilex/cpsc_ws1/build/square_mover/build/lib
+[0.494s] creating /home/agilex/cpsc_ws1/build/square_mover/build/lib/square_mover
+[0.494s] copying square_mover/__init__.py -> /home/agilex/cpsc_ws1/build/square_mover/build/lib/square_mover
+[0.494s] copying square_mover/square_mover.py -> /home/agilex/cpsc_ws1/build/square_mover/build/lib/square_mover
+[0.494s] running install
+[0.494s] running install_lib
+[0.494s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[0.494s]   warnings.warn(
+[0.494s] creating /home/agilex/cpsc_ws1/install/square_mover/lib/python3.10/site-packages/square_mover
+[0.494s] copying /home/agilex/cpsc_ws1/build/square_mover/build/lib/square_mover/__init__.py -> /home/agilex/cpsc_ws1/install/square_mover/lib/python3.10/site-packages/square_mover
+[0.494s] copying /home/agilex/cpsc_ws1/build/square_mover/build/lib/square_mover/square_mover.py -> /home/agilex/cpsc_ws1/install/square_mover/lib/python3.10/site-packages/square_mover
+[0.494s] byte-compiling /home/agilex/cpsc_ws1/install/square_mover/lib/python3.10/site-packages/square_mover/__init__.py to __init__.cpython-310.pyc
+[0.494s] byte-compiling /home/agilex/cpsc_ws1/install/square_mover/lib/python3.10/site-packages/square_mover/square_mover.py to square_mover.cpython-310.pyc
+[0.495s] running install_data
+[0.495s] creating /home/agilex/cpsc_ws1/install/square_mover/share/ament_index
+[0.495s] creating /home/agilex/cpsc_ws1/install/square_mover/share/ament_index/resource_index
+[0.495s] creating /home/agilex/cpsc_ws1/install/square_mover/share/ament_index/resource_index/packages
+[0.495s] copying resource/square_mover -> /home/agilex/cpsc_ws1/install/square_mover/share/ament_index/resource_index/packages
+[0.495s] copying package.xml -> /home/agilex/cpsc_ws1/install/square_mover/share/square_mover
+[0.495s] running install_egg_info
+[0.496s] Copying ../../build/square_mover/square_mover.egg-info to /home/agilex/cpsc_ws1/install/square_mover/lib/python3.10/site-packages/square_mover-0.0.0-py3.10.egg-info
+[0.496s] running install_scripts
+[0.508s] Installing square_mover script to /home/agilex/cpsc_ws1/install/square_mover/lib/square_mover
+[0.508s] writing list of installed files to '/home/agilex/cpsc_ws1/build/square_mover/install.log'
+[0.521s] Invoked command in '/home/agilex/cpsc_ws1/src/square_mover' returned '0': PYTHONPATH=/home/agilex/cpsc_ws1/build/square_mover/prefix_override:/home/agilex/cpsc_ws1/install/square_mover/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/square_mover build --build-base /home/agilex/cpsc_ws1/build/square_mover/build install --record /home/agilex/cpsc_ws1/build/square_mover/install.log --single-version-externally-managed
