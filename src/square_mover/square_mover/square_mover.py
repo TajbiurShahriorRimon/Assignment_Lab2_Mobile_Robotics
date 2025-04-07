@@ -1,43 +1,43 @@
 #!/usr/bin/env python3
 import rclpy
 from rclpy.node import Node
-from geometry_msgs.msg import Twist, PoseArray, Pose
+from geometry_msgs.msg import Twist
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge
 import cv2
 import cv2.aruco
-import numpy as np
-from rclpy.qos import QoSProfile, QoSReliabilityPolicy
 import time
+from rclpy.qos import QoSProfile, QoSReliabilityPolicy
 
-class ArucoDetector(Node):
+class ArucoPauser(Node):
     def __init__(self):
-        super().__init__('aruco_detector')
+        super().__init__('aruco_pauser')
         
         # Camera setup
         self.bridge = CvBridge()
-        camera_qos = QoSProfile(
-            reliability=QoSReliabilityPolicy.BEST_EFFORT,
-            depth=10
-        )
         self.create_subscription(
             Image,
             "/camera/color/image_raw",
             self.image_callback,
-            qos_profile=camera_qos
+            QoSProfile(reliability=QoSReliabilityPolicy.BEST_EFFORT, depth=10)
         )
         
-        # ArUco detection
+        # Movement control
+        self.cmd_vel_pub = self.create_publisher(Twist, "/cmd_vel", 10)
+        self.move_timer = self.create_timer(0.1, self.movement_control)
+        
+        # ArUco setup
         self.aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_50)
         self.aruco_params = cv2.aruco.DetectorParameters_create()
+        self.target_ids = [1, 2, 3, 4]
+        self.current_target = 1
         
-        # For movement control (separate from detection)
-        self.cmd_vel_pub = self.create_publisher(Twist, "/cmd_vel", 10)
-        self.movement_timer = None
+        # State control
+        self.state = "SEARCH"  # "SEARCH" or "PAUSE"
+        self.pause_start_time = 0
+        self.pause_duration = 2.0  # seconds
         
-        # State variables
-        self.last_marker_time = 0
-        self.stationary_duration = 2.0  # Seconds to pause for detection
+        self.get_logger().info("Aruco Pauser Ready - Searching for markers")
 
     def image_callback(self, msg):
         try:
@@ -48,50 +48,55 @@ class ArucoDetector(Node):
             corners, ids, _ = cv2.aruco.detectMarkers(gray, self.aruco_dict, parameters=self.aruco_params)
             
             if ids is not None:
-                self.last_marker_time = time.time()
                 cv2.aruco.drawDetectedMarkers(cv_image, corners, ids)
                 
                 for marker_id in ids.flatten():
-                    self.get_logger().info(f"Detected Marker ID: {marker_id}")
-                    
-                    # Start movement after detection
-                    if self.movement_timer is None:
-                        self.start_movement()
+                    if marker_id == self.current_target:
+                        self.get_logger().info(f"Detected target {marker_id}")
+                        self.state = "PAUSE"
+                        self.pause_start_time = time.time()
+                        self.switch_target()
             
             cv2.imshow("ArUco Detection", cv_image)
             cv2.waitKey(1)
             
         except Exception as e:
-            self.get_logger().error(f"Detection error: {str(e)}")
+            self.get_logger().error(f"Camera error: {str(e)}")
 
-    def start_movement(self):
-        """Start moving only after first detection"""
-        self.get_logger().info("Starting controlled movement")
-        self.movement_timer = self.create_timer(0.1, self.controlled_move)
+    def switch_target(self):
+        self.current_target = self.target_ids[
+            (self.target_ids.index(self.current_target) + 1) % len(self.target_ids)
+        ]
+        self.get_logger().info(f"Next target: Marker {self.current_target}")
 
-    def controlled_move(self):
-        """Movement that pauses when markers might be visible"""
+    def movement_control(self):
         twist = Twist()
         
-        # Stop if we recently saw a marker
-        if time.time() - self.last_marker_time < self.stationary_duration:
+        if self.state == "PAUSE":
+            # Stop for 2 seconds
             twist.linear.x = 0.0
             twist.angular.z = 0.0
-        else:
-            # Slow, controlled movement
-            twist.linear.x = 0.1
-            twist.angular.z = 0.2
+            
+            # Resume searching after pause duration
+            if time.time() - self.pause_start_time >= self.pause_duration:
+                self.state = "SEARCH"
+                self.get_logger().info("Resuming search")
+                
+        elif self.state == "SEARCH":
+            # Normal search movement
+            twist.linear.x = 0.15
+            twist.angular.z = 0.3
         
         self.cmd_vel_pub.publish(twist)
 
 def main(args=None):
     rclpy.init(args=args)
-    node = ArucoDetector()
+    node = ArucoPauser()
     
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:
-        pass
+        node.get_logger().info("Shutting down...")
     finally:
         node.destroy_node()
         cv2.destroyAllWindows()
