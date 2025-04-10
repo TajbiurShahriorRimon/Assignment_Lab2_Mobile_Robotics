@@ -31,13 +31,14 @@ class ArucoPauser(Node):
         self.aruco_params = cv2.aruco.DetectorParameters_create()
         self.target_ids = [1, 2, 3, 4]
         self.current_target = 1
+        self.detected_ids = set()  # Track detected markers
         
         # State control
-        self.state = "SEARCH"  # "SEARCH" or "PAUSE"
+        self.state = "SEARCH"  # "SEARCH", "PAUSE", or "STOP"
         self.pause_start_time = 0
         self.pause_duration = 2.0  # seconds
         
-        self.get_logger().info("Aruco Pauser Ready - Searching for markers")
+        self.get_logger().info("Aruco Pauser Ready - Will stop when all 4 markers are detected")
 
     def image_callback(self, msg):
         try:
@@ -49,13 +50,27 @@ class ArucoPauser(Node):
             
             if ids is not None:
                 cv2.aruco.drawDetectedMarkers(cv_image, corners, ids)
+                current_frame_ids = set(ids.flatten())
+                
+                # Update detected IDs
+                self.detected_ids.update(current_frame_ids)
+                
+                # Check if all target IDs are detected
+                if all(id in self.detected_ids for id in self.target_ids):
+                    self.state = "STOP"
+                    self.get_logger().info("ALL MARKERS DETECTED! Stopping robot.")
                 
                 for marker_id in ids.flatten():
-                    if marker_id == self.current_target:
+                    if marker_id == self.current_target and self.state != "STOP":
                         self.get_logger().info(f"Detected target {marker_id}")
                         self.state = "PAUSE"
                         self.pause_start_time = time.time()
                         self.switch_target()
+            
+            # Display detection status
+            status_text = f"Detected: {sorted(self.detected_ids)}/{len(self.target_ids)}"
+            cv2.putText(cv_image, status_text, (10, 30), 
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
             
             cv2.imshow("ArUco Detection", cv_image)
             cv2.waitKey(1)
@@ -72,7 +87,11 @@ class ArucoPauser(Node):
     def movement_control(self):
         twist = Twist()
         
-        if self.state == "PAUSE":
+        if self.state == "STOP":
+            # Complete stop when all markers detected
+            twist.linear.x = 0.0
+            twist.angular.z = 0.0
+        elif self.state == "PAUSE":
             # Stop for 2 seconds
             twist.linear.x = 0.0
             twist.angular.z = 0.0
@@ -81,7 +100,6 @@ class ArucoPauser(Node):
             if time.time() - self.pause_start_time >= self.pause_duration:
                 self.state = "SEARCH"
                 self.get_logger().info("Resuming search")
-                
         elif self.state == "SEARCH":
             # Normal search movement
             twist.linear.x = 0.15
