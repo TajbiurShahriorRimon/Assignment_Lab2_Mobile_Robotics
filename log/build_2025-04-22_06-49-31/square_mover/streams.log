@@ -1,0 +1,23 @@
+[0.456s] Invoking command in '/home/agilex/cpsc_ws_taj/src/square_mover': PYTHONPATH=/home/agilex/cpsc_ws_taj/build/square_mover/prefix_override:/home/agilex/cpsc_ws_taj/install/square_mover/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/square_mover build --build-base /home/agilex/cpsc_ws_taj/build/square_mover/build install --record /home/agilex/cpsc_ws_taj/build/square_mover/install.log --single-version-externally-managed
+[0.585s] running egg_info
+[0.585s] writing ../../build/square_mover/square_mover.egg-info/PKG-INFO
+[0.586s] writing dependency_links to ../../build/square_mover/square_mover.egg-info/dependency_links.txt
+[0.586s] writing entry points to ../../build/square_mover/square_mover.egg-info/entry_points.txt
+[0.586s] writing requirements to ../../build/square_mover/square_mover.egg-info/requires.txt
+[0.586s] writing top-level names to ../../build/square_mover/square_mover.egg-info/top_level.txt
+[0.587s] reading manifest file '../../build/square_mover/square_mover.egg-info/SOURCES.txt'
+[0.587s] writing manifest file '../../build/square_mover/square_mover.egg-info/SOURCES.txt'
+[0.587s] running build
+[0.587s] running build_py
+[0.587s] running install
+[0.588s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[0.588s]   warnings.warn(
+[0.588s] running install_lib
+[0.588s] running install_data
+[0.589s] running install_egg_info
+[0.590s] removing '/home/agilex/cpsc_ws_taj/install/square_mover/lib/python3.10/site-packages/square_mover-0.0.0-py3.10.egg-info' (and everything under it)
+[0.590s] Copying ../../build/square_mover/square_mover.egg-info to /home/agilex/cpsc_ws_taj/install/square_mover/lib/python3.10/site-packages/square_mover-0.0.0-py3.10.egg-info
+[0.591s] running install_scripts
+[0.602s] Installing square_mover script to /home/agilex/cpsc_ws_taj/install/square_mover/lib/square_mover
+[0.602s] writing list of installed files to '/home/agilex/cpsc_ws_taj/build/square_mover/install.log'
+[0.617s] Invoked command in '/home/agilex/cpsc_ws_taj/src/square_mover' returned '0': PYTHONPATH=/home/agilex/cpsc_ws_taj/build/square_mover/prefix_override:/home/agilex/cpsc_ws_taj/install/square_mover/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/square_mover build --build-base /home/agilex/cpsc_ws_taj/build/square_mover/build install --record /home/agilex/cpsc_ws_taj/build/square_mover/install.log --single-version-externally-managed
