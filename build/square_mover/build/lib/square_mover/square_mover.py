@@ -119,7 +119,7 @@ class MarkerMapper(Node):
         
         if self.state == "SCAN":
             # Rotate at 0.5 rad/s (~30°/s)
-            twist.angular.z = 0.5
+            twist.angular.z = 0.3
             
             # Check if full rotation is complete
             if current_time - self.scan_start_time >= self.rotation_duration:
