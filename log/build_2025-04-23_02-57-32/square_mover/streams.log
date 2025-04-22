@@ -1,0 +1,35 @@
+[0.466s] Invoking command in '/home/agilex/taj_ws_final/build/square_mover': PYTHONPATH=/home/agilex/taj_ws_final/build/square_mover/prefix_override:/home/agilex/taj_ws_final/install/square_mover/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --uninstall --editable --build-directory /home/agilex/taj_ws_final/build/square_mover/build
+[0.611s] running develop
+[0.612s] /usr/lib/python3/dist-packages/setuptools/command/easy_install.py:158: EasyInstallDeprecationWarning: easy_install command is deprecated. Use build and pip and other standards-based tools.
+[0.612s]   warnings.warn(
+[0.613s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[0.613s]   warnings.warn(
+[0.689s] Removing /home/agilex/taj_ws_final/install/square_mover/lib/python3.10/site-packages/square-mover.egg-link (link to .)
+[0.707s] Invoked command in '/home/agilex/taj_ws_final/build/square_mover' returned '0': PYTHONPATH=/home/agilex/taj_ws_final/build/square_mover/prefix_override:/home/agilex/taj_ws_final/install/square_mover/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --uninstall --editable --build-directory /home/agilex/taj_ws_final/build/square_mover/build
+[0.708s] Invoking command in '/home/agilex/taj_ws_final/src/square_mover': PYTHONPATH=/home/agilex/taj_ws_final/build/square_mover/prefix_override:/home/agilex/taj_ws_final/install/square_mover/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/square_mover build --build-base /home/agilex/taj_ws_final/build/square_mover/build install --record /home/agilex/taj_ws_final/build/square_mover/install.log --single-version-externally-managed
+[0.850s] running egg_info
+[0.851s] writing ../../build/square_mover/square_mover.egg-info/PKG-INFO
+[0.851s] writing dependency_links to ../../build/square_mover/square_mover.egg-info/dependency_links.txt
+[0.851s] writing entry points to ../../build/square_mover/square_mover.egg-info/entry_points.txt
+[0.851s] writing requirements to ../../build/square_mover/square_mover.egg-info/requires.txt
+[0.851s] writing top-level names to ../../build/square_mover/square_mover.egg-info/top_level.txt
+[0.852s] reading manifest file '../../build/square_mover/square_mover.egg-info/SOURCES.txt'
+[0.852s] writing manifest file '../../build/square_mover/square_mover.egg-info/SOURCES.txt'
+[0.853s] running build
+[0.853s] running build_py
+[0.853s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[0.853s]   warnings.warn(
+[0.853s] running install
+[0.853s] running install_lib
+[0.853s] creating /home/agilex/taj_ws_final/install/square_mover/lib/python3.10/site-packages/square_mover
+[0.853s] copying /home/agilex/taj_ws_final/build/square_mover/build/lib/square_mover/square_mover.py -> /home/agilex/taj_ws_final/install/square_mover/lib/python3.10/site-packages/square_mover
+[0.853s] copying /home/agilex/taj_ws_final/build/square_mover/build/lib/square_mover/__init__.py -> /home/agilex/taj_ws_final/install/square_mover/lib/python3.10/site-packages/square_mover
+[0.854s] byte-compiling /home/agilex/taj_ws_final/install/square_mover/lib/python3.10/site-packages/square_mover/square_mover.py to square_mover.cpython-310.pyc
+[0.855s] byte-compiling /home/agilex/taj_ws_final/install/square_mover/lib/python3.10/site-packages/square_mover/__init__.py to __init__.cpython-310.pyc
+[0.855s] running install_data
+[0.855s] running install_egg_info
+[0.857s] Copying ../../build/square_mover/square_mover.egg-info to /home/agilex/taj_ws_final/install/square_mover/lib/python3.10/site-packages/square_mover-0.0.0-py3.10.egg-info
+[0.857s] running install_scripts
+[0.872s] Installing square_mover script to /home/agilex/taj_ws_final/install/square_mover/lib/square_mover
+[0.872s] writing list of installed files to '/home/agilex/taj_ws_final/build/square_mover/install.log'
+[0.888s] Invoked command in '/home/agilex/taj_ws_final/src/square_mover' returned '0': PYTHONPATH=/home/agilex/taj_ws_final/build/square_mover/prefix_override:/home/agilex/taj_ws_final/install/square_mover/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/square_mover build --build-base /home/agilex/taj_ws_final/build/square_mover/build install --record /home/agilex/taj_ws_final/build/square_mover/install.log --single-version-externally-managed

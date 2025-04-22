@@ -1,0 +1,15 @@
+running develop
+running egg_info
+writing square_mover.egg-info/PKG-INFO
+writing dependency_links to square_mover.egg-info/dependency_links.txt
+writing entry points to square_mover.egg-info/entry_points.txt
+writing requirements to square_mover.egg-info/requires.txt
+writing top-level names to square_mover.egg-info/top_level.txt
+reading manifest file 'square_mover.egg-info/SOURCES.txt'
+writing manifest file 'square_mover.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/agilex/taj_ws_final/install/square_mover/lib/python3.10/site-packages/square-mover.egg-link (link to .)
+Installing square_mover script to /home/agilex/taj_ws_final/install/square_mover/lib/square_mover
+
+Installed /home/agilex/taj_ws_final/build/square_mover
+running install_data

@@ -1,0 +1,21 @@
+[0.466s] Invoking command in '/home/agilex/taj_ws_final/build/square_mover': PYTHONPATH=/home/agilex/taj_ws_final/build/square_mover/prefix_override:/home/agilex/taj_ws_final/install/square_mover/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /home/agilex/taj_ws_final/build/square_mover/build --no-deps install_data
+[0.623s] running develop
+[0.623s] /usr/lib/python3/dist-packages/setuptools/command/easy_install.py:158: EasyInstallDeprecationWarning: easy_install command is deprecated. Use build and pip and other standards-based tools.
+[0.623s]   warnings.warn(
+[0.623s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[0.623s]   warnings.warn(
+[0.698s] running egg_info
+[0.698s] writing square_mover.egg-info/PKG-INFO
+[0.698s] writing dependency_links to square_mover.egg-info/dependency_links.txt
+[0.699s] writing entry points to square_mover.egg-info/entry_points.txt
+[0.699s] writing requirements to square_mover.egg-info/requires.txt
+[0.699s] writing top-level names to square_mover.egg-info/top_level.txt
+[0.700s] reading manifest file 'square_mover.egg-info/SOURCES.txt'
+[0.700s] writing manifest file 'square_mover.egg-info/SOURCES.txt'
+[0.701s] running build_ext
+[0.701s] Creating /home/agilex/taj_ws_final/install/square_mover/lib/python3.10/site-packages/square-mover.egg-link (link to .)
+[0.701s] Installing square_mover script to /home/agilex/taj_ws_final/install/square_mover/lib/square_mover
+[0.702s] 
+[0.702s] Installed /home/agilex/taj_ws_final/build/square_mover
+[0.702s] running install_data
+[0.717s] Invoked command in '/home/agilex/taj_ws_final/build/square_mover' returned '0': PYTHONPATH=/home/agilex/taj_ws_final/build/square_mover/prefix_override:/home/agilex/taj_ws_final/install/square_mover/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /home/agilex/taj_ws_final/build/square_mover/build --no-deps install_data

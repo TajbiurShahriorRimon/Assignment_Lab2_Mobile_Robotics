@@ -35,6 +35,7 @@ class MarkerMapper(Node):
         self.detector_params = aruco.DetectorParameters_create()
         self.target_ids = [1, 2, 3, 4]
         self.marker_positions = {}  # Stores {id: (x, y)} coordinates
+        self.centroid = None  # Stores (x, y) of centroid
         
         # Camera calibration (replace with your camera's values!)
         self.camera_matrix = np.array([
@@ -51,6 +52,18 @@ class MarkerMapper(Node):
         
         self.get_logger().info("Marker Mapper Ready!")
 
+    def calculate_centroid(self):
+        """Calculate the center point of all detected markers"""
+        if len(self.marker_positions) == len(self.target_ids):
+            x_coords = [pos[0] for pos in self.marker_positions.values()]
+            y_coords = [pos[1] for pos in self.marker_positions.values()]
+            centroid_x = np.mean(x_coords)
+            centroid_y = np.mean(y_coords)
+            self.centroid = (centroid_x, centroid_y)
+            self.get_logger().info(f"Centroid calculated at: ({centroid_x:.2f}, {centroid_y:.2f})")
+            return True
+        return False
+
     def image_callback(self, msg):
         try:
             cv_image = self.bridge.imgmsg_to_cv2(msg, "bgr8")
@@ -58,10 +71,10 @@ class MarkerMapper(Node):
             corners, ids, _ = aruco.detectMarkers(gray, self.aruco_dict, parameters=self.detector_params)
             
             if ids is not None:
-                # Draw detected markers with IDs (NEW ADDITION)
+                # Draw detected markers with IDs
                 cv2.aruco.drawDetectedMarkers(cv_image, corners, ids)
                 
-                # Add ID labels (NEW ADDITION)
+                # Add ID labels
                 for i, marker_id in enumerate(ids.flatten()):
                     center = corners[i][0].mean(axis=0)
                     cv2.putText(cv_image, f"ID:{marker_id}", 
@@ -79,8 +92,19 @@ class MarkerMapper(Node):
                         self.marker_positions[marker_id] = (x, y)
                         self.get_logger().info(f"Marker {marker_id}: x={x:.2f}m, y={y:.2f}m")
             
-            # Display state (NEW ADDITION)
-            cv2.putText(cv_image, f"State: {self.state}", (10,30),
+            # Calculate and display centroid when all markers are found
+            if len(self.marker_positions) == len(self.target_ids) and self.centroid is None:
+                self.calculate_centroid()
+            
+            # Display state and centroid information
+            display_text = f"State: {self.state}"
+            if self.centroid:
+                cx, cy = self.centroid
+                display_text += f"\nCentroid: ({cx:.2f}, {cy:.2f})"
+                cv2.putText(cv_image, f"Centroid: ({cx:.2f}, {cy:.2f})", 
+                           (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255,0,0), 2)
+            
+            cv2.putText(cv_image, display_text, (10,30),
                        cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0,0,255), 2)
             
             cv2.imshow("Marker View", cv_image)
@@ -105,7 +129,9 @@ class MarkerMapper(Node):
                     self.get_logger().warn(f"Missing markers! Detected: {list(self.marker_positions.keys())}")
                 else:
                     self.get_logger().info(f"All markers mapped! Positions: {self.marker_positions}")
+                    self.calculate_centroid()  # Ensure centroid is calculated
                     self.marker_positions.clear()
+                    self.centroid = None  # Reset for next scan
                     self.scan_start_time = current_time
         
         elif self.state == "MOVE_FORWARD":
